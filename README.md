@@ -1,8 +1,1 @@
-def Rev_SP_Code(row):
-    if row['NewSPCode1'].isnull():
-        return row['NewSPCode2']
-    else:
-        return row['NewSPCode1']
-    
-raw_nbm_db['Rev_SP_Code'] = raw_nbm_db.apply(Rev_SP_Code, axis=1)
-
+=VLOOKUP(AB106,'\\balicfs\MIS\Qlik_sense_online\[SP Code Mapper_FY 24_for_AOPFY25.xlsx]SP code mapper'!$F:$L,{2,3,4,5,6,7},0)
