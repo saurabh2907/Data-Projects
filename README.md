@@ -1,24 +1,7 @@
-import pandas as pd
-import numpy as np
-
-# Assuming df is your DataFrame and '_003_Age_banding_Summary[PREM_FREQ]' is the column you want to use for conditions
-conditions = [
-    df['_003_Age_banding_Summary[PREM_FREQ]'] == "1",
-    df['_003_Age_banding_Summary[PREM_FREQ]'] == "4",
-    df['_003_Age_banding_Summary[PREM_FREQ]'] == "2",
-    df['_003_Age_banding_Summary[PREM_FREQ]'] == "12",
-    df['_003_Age_banding_Summary[PREM_FREQ]'] == "0"
-]
-
-choices = [
-    '\u200B\u200B\u200B\u200B\u200BYearly',
-    '\u200B\u200B\u200B\u200BQuaterly',
-    '\u200B\u200B\u200BHalf-Yearly',
-    '\u200B\u200BMonthly',
-    '\u200BSP'
-]
-
-df['Premium Frequency'] = np.select(conditions, choices, default='')
-
-# Displaying the DataFrame with the 'Premium Frequency' column
-print(df)
+Ticket Size = SWITCH(TRUE(),
+                    [Banding] = "001_0 to 1 Lakh", "0-1 Lakh",
+                    [Banding] = "002_1 to 2 Lakhs", "1-2 Lakh",
+                    [Banding] = "003_2 to 2.5 Lakh", "2-2.5 Lakh",
+                    [Banding] = "004_2.5 to 5 Lakh", "2.5 to 5 Lakh",
+                    [Banding] = "005_above 5  Lakh", "Above 5 Lakh"
+)
