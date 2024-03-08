@@ -1,1 +1,1 @@
-Fund / Non Fund = IF(_003_Age_banding_Summary[Retail/Group] = "Group",IF(_003_Age_banding_Summary[Vertical]="CORPORATE BUSINESS" && _003_Age_banding_Summary[Products] <> "245-Group Term Life New","Fund", "Non Fund"),"NA")
+INDEX = RANKX(ALL(_003_Age_banding_Summary), _003_Age_banding_Summary[Sub_Segment], , ASC, Dense)
