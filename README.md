@@ -1,8 +1,17 @@
 Last_Month_NBMX = VAR
-  SelectedMonthName = SELECTEDVALUE('SlicerMonth'[Month Name])  ;; Replace 'SlicerMonth' with your slicer table name
-  RelatedDate = RELATED('DimDate'[Date], DimDate[Month Name], SelectedMonthName)
+  SelectedMonthName = SELECTEDVALUE('SlicerMonth'[Month Name])  ; Replace 'SlicerMonth' with your slicer table name
 RETURN
-  CALCULATE(
-    [NBM Selected],
-    DimDate[Month No] = MONTH(RelatedDate) - 1
-  )
+  SWITCH(
+    TRUE,
+    SelectedMonthName = "April", 3,  ; Previous month for April is March (3)
+    SelectedMonthName = "May", 4,  ; Previous month for May is April (4)
+    SelectedMonthName = "June", 5,  ; Previous month for June is May (5)
+    TRUE  ; Handle other selections (optional)
+  ) - 1
+  VAR
+    PreviousMonthNo = SWITCH(Result)  ; Result from SWITCH above
+  RETURN
+    CALCULATE(
+      [NBM Selected],
+      DimDate[Month No] = PreviousMonthNo
+    )
