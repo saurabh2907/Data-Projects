@@ -1,9 +1,8 @@
-Last_Month_NBMX = 
+Last_Month_NBMX = VAR
+  SelectedMonthName = SELECTEDVALUE('SlicerMonth'[Month Name])  ;; Replace 'SlicerMonth' with your slicer table name
+  RelatedDate = RELATED('DimDate'[Date], DimDate[Month Name], SelectedMonthName)
+RETURN
   CALCULATE(
     [NBM Selected],
-    DATESBETWEEN(
-      DimDate[Date],
-      DATE(YEAR(TODAY()), MONTH(TODAY())-1, 1),
-      EOMONTH(DATE(YEAR(TODAY()), MONTH(TODAY())-1), 0)
-    )
+    DimDate[Month No] = MONTH(RelatedDate) - 1
   )
