@@ -1,18 +1,37 @@
-FilterTop3ByCat_Filter =
-VAR Top3Cat =
-    CALCULATETABLE (
-        GENERATE (
-            VALUES ( 'Product'[Category] ),
-            TOPN (
-                3,
-                CALCULATETABLE ( VALUES ( 'Product'[Product Name] ) ),
-                [Sales Amount]
-            )
+CALCULATETABLE(
+    SUMMARIZE(
+        FILTER(
+            YourTable,
+            YourTable[Segment] = "par"
         ),
-        ALLSELECTED()
+        YourTable[Product],
+        "Amount", SUM(YourTable[Amount])
+    ),
+    RANKX(
+        SUMMARIZE(
+            FILTER(
+                YourTable,
+                YourTable[Segment] = "par"
+            ),
+            YourTable[Product],
+            "Amount", SUM(YourTable[Amount])
+        ),
+        [Amount],
+        DESC
+    ),
+    FILTER(
+        RANKX(
+            SUMMARIZE(
+                FILTER(
+                    YourTable,
+                    YourTable[Segment] = "par"
+                ),
+                YourTable[Product],
+                "Amount", SUM(YourTable[Amount])
+            ),
+            [Amount],
+            DESC
+        ),
+        [Rank] = 1
     )
-RETURN
-    CALCULATE (
-        1 * ( NOT ISEMPTY ( 'Product' ) ),
-        KEEPFILTERS ( Top3Cat )
-    )
+)
