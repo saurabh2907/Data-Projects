@@ -1,37 +1,13 @@
-CALCULATETABLE(
-    SUMMARIZE(
-        FILTER(
-            YourTable,
-            YourTable[Segment] = "par"
-        ),
-        YourTable[Product],
-        "Amount", SUM(YourTable[Amount])
-    ),
-    RANKX(
-        SUMMARIZE(
-            FILTER(
-                YourTable,
-                YourTable[Segment] = "par"
-            ),
-            YourTable[Product],
-            "Amount", SUM(YourTable[Amount])
-        ),
-        [Amount],
-        DESC
-    ),
+TOPN(
+    1,
     FILTER(
-        RANKX(
-            SUMMARIZE(
-                FILTER(
-                    YourTable,
-                    YourTable[Segment] = "par"
-                ),
-                YourTable[Product],
-                "Amount", SUM(YourTable[Amount])
-            ),
-            [Amount],
-            DESC
+        SUMMARIZE(
+            YourTable,
+            YourTable[Product],
+            "TotalAmount", SUM(YourTable[Amount])
         ),
-        [Rank] = 1
-    )
+        YourTable[Segment] = "par"
+    ),
+    [TotalAmount],
+    DESC
 )
