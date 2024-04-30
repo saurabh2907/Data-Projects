@@ -8,19 +8,16 @@ VAR SalesList =
     CALCULATE(SUM('YourTable'[Sales]), EARLIER('YourTable'[Company])))
 RETURN
   VAR Combined = 
-    CONCATENATE(
-      SUMX(
-        CompanyList,
-        CALCULATE(FIRSTNONBLANK('YourTable'[Company]), EARLIER('YourTable'[Company]))
-      ),
-      "+"
-    )
+    CONCATENATEX(
+      CompanyList,
+      CALCULATE(FIRSTNONBLANK('YourTable'[Company],1), EARLIER('YourTable'[Company]))
+      ," + ")
   RETURN
   UNION(
     'YourTable',
     SELECTCOLUMNS(
       GENERATESERIES(ROWS('YourTable') + 1, 1),
       "Company", Combined,
-      "Sales", SUMX(SalesList)
+      "Sales", SUMX(SalesList,[Sales])
     )
   )
