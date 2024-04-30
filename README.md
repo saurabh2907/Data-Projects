@@ -5,12 +5,12 @@ VAR CompanyList =
 VAR SalesList = 
   SUMX(
     CompanyList,
-    CALCULATE(SUM('YourTable'[Sales]), EARLIER('YourTable'[Company])))
+    CALCULATE(SUM('YourTable'[Sales])))
 RETURN
   VAR Combined = 
     CONCATENATEX(
       CompanyList,
-      CALCULATE(FIRSTNONBLANK('YourTable'[Company],1), EARLIER('YourTable'[Company]))
+      FIRSTNONBLANK('YourTable'[Company], 1)
       ," + ")
   RETURN
   UNION(
