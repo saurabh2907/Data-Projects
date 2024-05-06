@@ -31,3 +31,7 @@ password = 'your_password'
 
 # Call the function to append data to SQL Server
 append_excel_to_sql(excel_file, server, database, table, username, password)
+
+
+ProgrammingError: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]The incoming tabular data stream (TDS) remote procedure call (RPC) protocol stream is incorrect. Parameter 4 (""): The supplied value is not a valid instance of data type float. Check the source data for invalid values. An example of an invalid value is data of numeric type with scale greater than precision. (8023) (SQLExecDirectW)')
+
