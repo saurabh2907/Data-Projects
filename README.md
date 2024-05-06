@@ -37,5 +37,6 @@ df.to_sql(name='Vintage_Mapper',con=Finconnection, if_exists='append', index=Fal
 
 Fin_connection = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER=Server; DATABASE=database;user=UID; password=PWD; Trusted_Connection=yes;')
 
+OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]Named Pipes Provider: Could not open a connection to SQL Server [53].  (53) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (53)')
 
 
