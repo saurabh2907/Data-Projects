@@ -33,5 +33,8 @@ password = 'your_password'
 append_excel_to_sql(excel_file, server, database, table, username, password)
 
 
-ProgrammingError: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]The incoming tabular data stream (TDS) remote procedure call (RPC) protocol stream is incorrect. Parameter 4 (""): The supplied value is not a valid instance of data type float. Check the source data for invalid values. An example of an invalid value is data of numeric type with scale greater than precision. (8023) (SQLExecDirectW)')
+df.to_sql(name='Vintage_Mapper',con=Finconnection, if_exists='append', index=False)
+
+DatabaseError: Execution failed on sql 'SELECT name FROM sqlite_master WHERE type='table' AND name=?;': ('42S02', "[42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Invalid object name 'sqlite_master'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC SQL Server Driver][SQL Server]Statement(s) could not be prepared. (8180)")
+
 
