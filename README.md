@@ -1,7 +1,3 @@
-Growth_Amt%_MTD = 
-VAR Actual = [DatesMTD_Amt_Actual_RTL]
-VAR PY = [PY Value Amt_Actual_MTD]
-RETURN
-IF(OR(ISBLANK(Actual),ISBLANK(PY)), "NA",
-DIVIDE(Actual,PY,0) -1
-)
+DatabaseError: Execution failed on sql: select * FROM [FinDB].[dbo].[Vintage_Mapper] 
+('01000', '[01000] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionWrite (send()). (10054) (SQLExecDirectW); [01000] [Microsoft][ODBC SQL Server Driver][DBNETLIB]General network error. Check your network documentation. (11)')
+unable to rollback
