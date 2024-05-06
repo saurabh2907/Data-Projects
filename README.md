@@ -37,6 +37,5 @@ df.to_sql(name='Vintage_Mapper',con=Finconnection, if_exists='append', index=Fal
 
 Fin_connection = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER=Server; DATABASE=database;user=UID; password=PWD; Trusted_Connection=yes;')
 
-OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]Named Pipes Provider: Could not open a connection to SQL Server [53].  (53) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (53)')
-
-
+Error 0xc020902a: Data Flow Task 1: The "Source - Margin_Mar24_csv.Outputs[Flat File Source Output].Columns[PARTNER_NAME]" failed because truncation occurred, and the truncation row disposition on "Source - Margin_Mar24_csv.Outputs[Flat File Source Output].Columns[PARTNER_NAME]" specifies failure on truncation. A truncation error occurred on the specified object of the specified component.
+ (SQL Server Import and Export Wizard)
