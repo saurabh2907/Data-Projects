@@ -35,7 +35,7 @@ append_excel_to_sql(excel_file, server, database, table, username, password)
 
 df.to_sql(name='Vintage_Mapper',con=Finconnection, if_exists='append', index=False)
 
-InterfaceError: (pyodbc.InterfaceError) ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Data source name not found and no default driver specified (0) (SQLDriverConnect)')
+Fin_connection = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER=Server; DATABASE=database;user=UID; password=PWD; Trusted_Connection=yes;')
 
 
 
