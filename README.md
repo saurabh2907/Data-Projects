@@ -1,1 +1,1 @@
-Fin_Database_Connection = f'mssql+pyodbc://{UID}:{PWD}@{Server}/{database}?driver={Driver}'
+InterfaceError: (pyodbc.InterfaceError) ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Data source name not found and no default driver specified (0) (SQLDriverConnect)')
